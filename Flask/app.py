@@ -7,7 +7,7 @@ model = pickle.load(open(r'E:/Flask/model.pkl','rb'))
 
 @app.route('/')
 def home():
-    return render_template("finalweb.html")
+    return render_template("template.html")
 
 @app.route('/Result', methods=["POST"])
 def result():
@@ -22,7 +22,7 @@ def result():
     X = pd.DataFrame([[cylinders,displacement,horsepower,weight,acceleration,modelYear,origin]], columns = ["cylinders", "displacement", "horsepower", "weight", "acceleration", "model year", "origin"])
     output = model.predict(X)[0]
     s = "The mpg prediction is: " + str(output)
-    return render_template("finalweb.html", resultText = s)
+    return render_template("template.html", resultText = s)
     
         
     
